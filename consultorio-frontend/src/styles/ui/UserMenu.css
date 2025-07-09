@@ -1,0 +1,27 @@
+.user-menu-button {
+  @apply w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold uppercase;
+}
+
+.user-menu-dropdown {
+  @apply absolute right-0 mt-2 w-48 border rounded shadow-lg z-50 bg-white dark:bg-neutral-800;
+}
+
+.user-menu-header {
+  @apply px-4 py-2 border-b text-sm;
+}
+
+.user-menu-name {
+  @apply font-medium;
+}
+
+.user-menu-role {
+  @apply text-gray-500 text-xs;
+}
+
+.user-menu-button-config {
+  @apply w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-zinc-700;
+}
+
+.user-menu-button-logout {
+  @apply w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-zinc-700;
+}

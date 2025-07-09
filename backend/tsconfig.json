@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                     // Usa ES2020 para async/await y otras features modernas
+    "module": "commonjs",                   // Node.js clásico
+    "rootDir": "./src",                     // Tu código fuente
+    "outDir": "./dist",                     // Código compilado
+    "strict": true,                         // Activa todas las comprobaciones estrictas
+    "esModuleInterop": true,                // Para importar paquetes comunes sin líos
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,                   // Evita revisar tipos de librerías externas (evita muchos errores)
+    "moduleResolution": "node",             // Resolución tipo Node.js
+    "resolveJsonModule": true,               // Para poder importar JSON si lo necesitas
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./node_modules/@types"], // Carga tipos solo desde node_modules/@types
+    "types": ["node"]                       // Incluye sólo tipos de Node.js (no express porque Express 5 los trae)
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

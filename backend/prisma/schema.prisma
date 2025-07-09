@@ -1,0 +1,90 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL") // tu conexión MySQL
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  role      Role      @default(CLIENT)
+  phone     String?
+  createdAt DateTime  @default(now())
+  
+  // Relaciones
+  professionalProfile ProfessionalProfile?
+  appointmentsAsClient Appointment[] @relation("ClientAppointments")
+  appointmentsAsProfessional Appointment[] @relation("ProfessionalAppointments")
+}
+
+model ProfessionalProfile {
+  id             Int       @id @default(autoincrement())
+  userId         Int       @unique
+  specialtyId    Int
+  description    String
+  certificates  Json
+  photoUrl       String?
+  socialLinks    Json?     // { facebook, instagram, website }
+  isVerified     Boolean   @default(false)  // NUEVO CAMPO
+
+  
+  user           User      @relation(fields: [userId], references: [id])
+  specialty      Specialty @relation(fields: [specialtyId], references: [id])
+  services       Service[]
+}
+
+model Specialty {
+  id          Int                  @id @default(autoincrement())
+  name        String               @unique
+  description String?
+  professionals ProfessionalProfile[]
+}
+
+model Service {
+  id             Int       @id @default(autoincrement())
+  name           String
+  description    String
+  durationMinutes Int
+  price          Float
+  professionalId Int
+  isActive       Boolean   @default(true)
+  
+  professional   ProfessionalProfile @relation(fields: [professionalId], references: [id])
+  appointments   Appointment[]
+}
+
+model Appointment {
+  id             Int       @id @default(autoincrement())
+  clientId       Int
+  serviceId      Int
+  professionalId Int
+  date           DateTime
+  startTime      String
+  status         AppointmentStatus @default(PENDING)
+  notes          String?
+  createdAt      DateTime  @default(now())
+  
+  client         User      @relation("ClientAppointments", fields: [clientId], references: [id])
+  service        Service   @relation(fields: [serviceId], references: [id])
+  professional   User      @relation("ProfessionalAppointments", fields: [professionalId], references: [id])
+}
+
+enum Role {
+  ADMIN
+  PROFESSIONAL
+  CLIENT
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
