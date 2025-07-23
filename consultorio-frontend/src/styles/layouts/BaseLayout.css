@@ -8,9 +8,15 @@
 }
 
 .layout-content-wrapper {
-  @apply flex-1 flex flex-col relative;
+  @apply flex-1 flex flex-col relative ;
 }
 
 .layout-main {
   @apply flex-1 p-6;
+}
+
+@media (max-width: 768px) {
+  .layout-content-wrapper {
+    @apply mt-10;
+  }
 }

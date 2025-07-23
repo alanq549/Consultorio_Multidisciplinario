@@ -30,7 +30,7 @@ const Home = () => {
         "Rehabilitación física y terapia de dolor con técnicas avanzadas",
     },
   ];
-
+ 
   return (
     <div className="home-container">
       {/* Hero Section con gradiente y espaciado amplio */}
@@ -167,7 +167,7 @@ const Home = () => {
       <section className="final-cta">  {/* aqui tambien se puede cambiar en la bd */}
         <div className="cta-content">
           <h2>¿Listo para comenzar tu viaje hacia el bienestar?</h2>
-<button className="cta-button" onClick={() => navigate("/login?next=/reservar")}>
+<button className="cta-button" onClick={() => navigate("/login?next=/dashboard/client/book")}>
   Reserva tu primera cita
 </button>
 

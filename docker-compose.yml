@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend:
+    build: ./consultorio-frontend
+    ports:
+      - "80:80"          # Cambia 5173:5173 por 80:80 porque Nginx sirve en el puerto 80
+    env_file :
+    - ./consultorio-frontend/.env
+    volumes:
+      - ./consultorio-frontend/public:/usr/share/nginx/html/public # Opcional si quieres servir assets

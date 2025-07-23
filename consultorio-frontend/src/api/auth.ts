@@ -2,7 +2,8 @@
 const API_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function registerUser(data: {
-  name: string;
+  name: string;           // ✅ CAMBIADO
+  lastName?: string;
   email: string;
   password: string;
   phone?: string;
@@ -21,6 +22,8 @@ export async function registerUser(data: {
 
   return res.json();
 }
+
+
 
 export async function loginUser(data: { email: string; password: string }) {
   const res = await fetch(`${API_URL}/auth/login`, {

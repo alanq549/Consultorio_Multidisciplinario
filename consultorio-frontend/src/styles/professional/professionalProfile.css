@@ -1,0 +1,356 @@
+/* Base Styles */
+.profile-layout {
+  @apply max-w-7xl mx-auto px-6 py-10;
+}
+
+/* Profile Card */
+.profile-card {
+  @apply bg-white dark:bg-zinc-800 rounded-2xl shadow-lg overflow-hidden;
+}
+
+/* Header Section */
+.profile-header {
+  @apply flex flex-col md:flex-row items-start md:items-center gap-8 p-10 pb-6;
+}
+
+.profile-avatar-container {
+  @apply relative;
+}
+
+.profile-avatar-image {
+  @apply w-40 h-40 rounded-full object-cover border-4 border-white dark:border-gray-950 shadow-xl;
+}
+
+.profile-info-container {
+  @apply flex-1 space-y-4;
+}
+
+.profile-name-verified {
+  @apply flex items-center gap-4;
+}
+
+.profile-user-name {
+  @apply text-4xl font-bold text-gray-800 dark:text-white;
+}
+
+.profile-verification-badge {
+  @apply flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-lg font-medium rounded-full;
+}
+
+.verified-icon {
+  @apply w-6 h-6;
+}
+
+.profile-user-specialty {
+  @apply text-2xl text-blue-600 dark:text-teal-400 font-medium;
+}
+
+.profile-user-email {
+  @apply flex items-center gap-2 text-xl text-gray-600 dark:text-gray-300;
+}
+
+.email-icon {
+  @apply w-6 h-6;
+}
+
+.profile-social-links {
+  @apply flex flex-wrap gap-4 pt-2;
+}
+
+.social-icon-link {
+  @apply flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-teal-800/40 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition-colors;
+}
+.social-icon-link {
+  @apply flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-teal-800/40
+  hover:bg-gray-200 dark:hover:bg-teal-600/40 text-gray-800 dark:text-gray-200  border dark:border-teal-400
+  rounded-lg transition-colors hover:scale-105 transform;
+}
+
+
+.social-icon {
+  @apply w-6 h-6;
+}
+
+.profile-edit-button {
+  @apply flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-teal-800/40 hover:bg-gray-200
+   dark:hover:bg-teal-600/40 text-gray-800 dark:text-white rounded-lg transition-colors text-lg font-medium
+   border dark:border-teal-400;
+}
+
+.edit-icon {
+  @apply w-6 h-6;
+}
+
+/* Content Sections */
+.profile-content-section {
+  @apply px-10 py-8 border-t border-gray-200 dark:border-gray-700;
+}
+
+.profile-section-title {
+  @apply text-2xl font-bold text-gray-800 dark:text-white mb-6;
+}
+
+.profile-section-header {
+  @apply flex justify-between items-center mb-6;
+}
+
+.profile-section-count {
+  @apply px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full;
+}
+
+.profile-description {
+  @apply text-lg text-gray-700 dark:text-gray-300 leading-relaxed;
+}
+
+/* Certificates */
+.certificates-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.certificate-card {
+  @apply bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-600 transition-transform hover:scale-[1.02] shadow-md;
+}
+
+.certificate-preview {
+  @apply h-48 bg-gray-100 dark:bg-gray-600 flex items-center justify-center;
+}
+
+.certificate-image {
+  @apply w-full h-full object-contain;
+}
+
+.certificate-pdf-icon, .certificate-file-icon {
+  @apply w-20 h-20 text-red-500 dark:text-red-400;
+}
+
+.certificate-link {
+  @apply block py-3 text-center text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 transition-colors font-medium;
+}
+
+.empty-certificates {
+  @apply col-span-full py-12 text-center;
+}
+
+.empty-icon {
+  @apply w-20 h-20 mx-auto text-gray-400 dark:text-gray-500 mb-4;
+}
+
+/* Loading States */
+.profile-loading-container {
+  @apply flex items-center justify-center h-64;
+}
+
+.profile-loading-spinner {
+  @apply w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin;
+}
+
+.profile-error-container {
+  @apply text-center py-8 text-red-600 dark:text-red-400;
+}
+
+
+
+  
+/* Edit Form Styles */
+.profile-edit-form {
+  @apply bg-white dark:bg-zinc-800 rounded-2xl shadow-xl overflow-hidden p-10 max-w-7xl mx-auto ;
+
+}
+
+.form-header {
+  @apply mb-8;
+}
+
+.form-title {
+  @apply text-3xl font-bold text-green-800 dark:text-white;
+}
+
+.form-group {
+  @apply mb-8;
+}
+
+.form-label {
+  @apply block text-xl font-semibold text-gray-800 dark:text-white mb-4;
+}
+
+/* Avatar Edit */
+.avatar-edit-container {
+  @apply flex flex-col items-center gap-4;
+}
+
+.avatar-edit-image {
+  @apply w-40 h-40 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg;
+}
+
+.avatar-edit-button {
+  @apply flex items-center gap-2 px-6 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors cursor-pointer text-lg;
+}
+
+.edit-icon {
+  @apply w-5 h-5;
+}
+
+/* Form Inputs */
+.form-select,
+.form-input,
+.form-textarea {
+  @apply w-full px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 transition-all text-lg;
+}
+
+.form-textarea {
+  @apply min-h-[200px];
+}
+
+/* Certificates */
+.certificates-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6;
+}
+
+.certificate-card {
+  @apply bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-600 shadow-md;
+}
+
+.certificate-preview {
+  @apply h-40 bg-gray-100 dark:bg-gray-600 flex items-center justify-center;
+}
+
+.certificate-image {
+  @apply w-full h-full object-contain;
+}
+
+.pdf-icon,
+.file-icon {
+  @apply w-16 h-16 text-red-500 dark:text-red-400;
+}
+
+.certificate-actions {
+  @apply flex justify-between p-3 bg-white dark:bg-zinc-800;
+}
+
+.view-link {
+  @apply text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300;
+}
+
+.delete-link {
+  @apply text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300;
+}
+
+.file-upload-label {
+  @apply flex flex-col items-center justify-center gap-3 p-8 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl hover:border-teal-500 dark:hover:border-teal-400 transition-colors cursor-pointer;
+}
+
+.upload-icon {
+  @apply w-12 h-12 text-gray-400 dark:text-gray-500;
+}
+
+/* Social Inputs */
+.social-input-group {
+  @apply space-y-4;
+}
+
+.social-input-container {
+  @apply flex items-center gap-4;
+}
+
+.social-icon {
+  @apply w-8 h-8 flex-shrink-0;
+}
+
+.social-icon.facebook {
+  @apply text-blue-600;
+}
+
+.social-icon.instagram {
+  @apply text-pink-600;
+}
+
+.social-icon.website {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+.social-input {
+  @apply flex-1 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 transition-all;
+}
+
+/* Form Actions */
+.form-actions {
+  @apply flex justify-end gap-4 mt-10;
+}
+
+.submit-button {
+  @apply px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-teal-200 dark:hover:shadow-teal-900 text-lg flex items-center gap-2;
+}
+
+.cancel-button {
+  @apply px-8 py-4 bg-gray-500 hover:bg-gray-600 text-white rounded-xl font-medium transition-colors text-lg;
+}
+
+.spinner {
+  @apply animate-spin w-6 h-6;
+}
+
+
+
+.certificates-grid {
+    @apply grid gap-4 grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))];
+  }
+
+  .certificate-card {
+    @apply border border-gray-300 dark:border-teal-400 rounded-lg p-2 shadow-sm flex flex-col dark:bg-teal-800/40 ;
+  }
+
+  .certificate-preview {
+    @apply flex justify-center items-center w-full overflow-hidden rounded-md bg-gray-100 flex-shrink-0;
+  }
+
+  .certificate-image {
+    @apply w-full h-auto object-contain rounded-md;
+  }
+
+  .pdf-loading {
+    @apply w-full text-center py-4 italic text-gray-500;
+  }
+
+  .certificate-actions {
+    @apply mt-2 flex justify-between text-sm;
+  }
+
+  .view-link,
+  .delete-link {
+    @apply cursor-pointer text-teal-600 bg-transparent border-none p-0 underline;
+  }
+
+  .view-link:hover,
+  .delete-link:hover {
+    @apply text-blue-800;
+  }
+
+/*resenas*/
+.review-grid {
+  @apply grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ;
+}
+
+/* Card individual de reseña */
+.review-card {
+  @apply bg-neutral-50  dark:bg-teal-800/40 p-4 rounded-xl shadow-md flex flex-col justify-between;
+}
+
+/* Header con avatar + nombre + fecha */
+.review-card-header {
+  @apply flex items-center gap-3 mb-3 text-gray-900 dark:text-white ;
+}
+
+/* Avatar */
+.review-card-avatar {
+  @apply w-12 h-12 rounded-full object-cover;
+}
+
+/* Rating */
+.review-card-rating {
+  @apply text-yellow-400 font-bold mb-2 ;
+}
+
+/* Comentario */
+.review-card-comment {
+  @apply text-gray-900 dark:text-gray-200;
+}

@@ -1,0 +1,86 @@
+/* modal.css */
+.modal-backdrop {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300;
+}
+
+.modal-backdrop.entering {
+  @apply opacity-100;
+}
+
+.modal-backdrop.exiting {
+  @apply opacity-0;
+}
+
+.modal {
+  @apply bg-white dark:bg-zinc-800 rounded-xl shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-all duration-300;
+}
+
+.modal.entering {
+  @apply scale-100 opacity-100;
+}
+
+.modal.exiting {
+  @apply scale-95 opacity-0;
+}
+
+.modal-header {
+  @apply flex justify-between items-center p-6 border-b border-gray-200 dark:border-teal-400;
+}
+
+.modal-title {
+  @apply text-xl font-bold text-gray-800 dark:text-white;
+}
+
+.modal-close {
+  @apply p-1 rounded-full text-gray-500 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-teal-700 transition-colors;
+  
+}
+
+.modal-close svg {
+  @apply w-6 h-6 dark:text-gray-200;
+}
+
+.modal-body {
+  @apply p-6;
+}
+
+.modal-message {
+  @apply text-gray-600 dark:text-gray-300;
+}
+
+.modal-footer {
+  @apply flex justify-end gap-3 p-6 border-t border-gray-200 dark:border-gray-700;
+}
+
+.modal-button {
+  @apply px-4 py-2 rounded-lg font-medium transition-colors;
+}
+
+.cancel-buttonm {
+  @apply text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700;
+}
+
+.confirm-button {
+  @apply bg-teal-600 hover:bg-teal-700 text-white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .modal {
+    @apply mx-2;
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    @apply p-4;
+  }
+  
+  .modal-footer {
+    @apply flex-col gap-2;
+  }
+  
+  .modal-button {
+    @apply w-full;
+  }
+}

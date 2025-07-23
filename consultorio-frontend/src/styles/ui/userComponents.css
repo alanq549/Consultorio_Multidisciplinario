@@ -1,0 +1,66 @@
+/* User Card */
+.user-card {
+  @apply bg-white dark:bg-teal-800/40 shadow-md dark:shadow-none rounded-xl p-4 flex gap-4 border border-teal-100 dark:border-teal-700 transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+}
+
+.user-avatar {
+  @apply w-24 h-24 rounded-full object-cover border-2 border-teal-200 dark:border-teal-600;
+}
+
+.user-info {
+  @apply flex-1;
+}
+
+.user-name {
+  @apply text-xl font-semibold text-teal-800 dark:text-teal-50;
+}
+
+.user-role {
+  @apply text-sm text-teal-600 dark:text-teal-300;
+}
+
+.user-badge {
+  @apply inline-block px-2 py-1 rounded-full text-xs font-medium mt-1;
+}
+
+.verified-badge {
+  @apply user-badge bg-teal-100 text-teal-800 dark:bg-teal-700 dark:text-teal-200;
+}
+
+.professional-badge {
+  @apply user-badge bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-200;
+}
+
+.client-badge {
+  @apply user-badge bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-200;
+}
+
+.profile-button {
+  @apply mt-3 text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 text-sm font-medium transition-colors;
+}
+
+/* User List */
+.user-list {
+  @apply space-y-8;
+}
+
+.user-section {
+  @apply mb-8;
+}
+
+.section-title {
+  @apply text-xl font-bold text-teal-800 dark:text-teal-100 mb-4 pb-2 border-b border-teal-200 dark:border-teal-700;
+}
+
+.user-grid {
+  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+/* Users Page */
+
+
+.users-title {
+  @apply text-2xl font-bold text-teal-900 dark:text-white mb-6;
+}
+
+

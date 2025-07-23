@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
 import "../styles/layouts/BaseLayout.css";
+import FloatingNotifications from "../components/ui/FloatingNotification";
+import { ThemeProvider } from "../components/context/ThemeProvider";
 
 interface BaseLayoutProps {
   sidebar?: React.ReactNode;
@@ -8,18 +10,23 @@ interface BaseLayoutProps {
 
 const BaseLayout = ({ sidebar, header }: BaseLayoutProps) => {
   return (
-    <div className="layout-container">
-      {sidebar && <div className="layout-sidebar">{sidebar}</div>}
+    <ThemeProvider>
+      <div className="layout-container">
+        {sidebar}
 
-      <div className="layout-content-wrapper">
-        {header && header}
+        <div className="layout-content-wrapper">
+          {header && header}
 
-        <main className="layout-main">
-          <Outlet />
-        </main>
+          <main className="layout-main">
+            <Outlet />
+          </main>
+        </div>
+
+        <FloatingNotifications />
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
+
 
 export default BaseLayout;

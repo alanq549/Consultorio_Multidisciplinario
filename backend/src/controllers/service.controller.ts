@@ -46,19 +46,53 @@ export const getServiceById = async (req: Request, res: Response): Promise<void>
   }
 };
 
-export const createService = async (req: Request, res: Response): Promise<void> => {
-  const { name, description, durationMinutes, price, professionalId } = req.body;
+// GET /api/service/professional/:id
+export const getServicesByProfessional = async (req: Request, res: Response) => {
+  const professionalId = Number(req.params.id);
+
   try {
+    const services = await prisma.service.findMany({
+      where: { professionalId, isActive: true },
+      include: {
+        professional: {
+          include: {
+            user: true,
+            specialty: true,
+          },
+        },
+      },
+    });
+    res.json(services);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al obtener servicios del profesional" });
+  }
+};
+
+export const createService = async (req: Request, res: Response): Promise<any> => {
+  const { name, description, durationMinutes, price } = req.body;
+  const userId = req.user?.id; // del token JWT
+
+  try {
+    const professional = await prisma.professionalProfile.findUnique({
+      where: { userId },
+    });
+
+    if (!professional) {
+      return res.status(403).json({ message: "Perfil profesional no encontrado" });
+    }
+
     const service = await prisma.service.create({
       data: {
         name,
         description,
         durationMinutes,
         price,
-        professionalId,
+        professionalId: professional.id,
         isActive: true,
       },
     });
+
     res.status(201).json(service);
   } catch (error) {
     console.error(error);
@@ -93,5 +127,40 @@ export const deleteService = async (req: Request, res: Response): Promise<void> 
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al eliminar servicio" });
+  }
+};
+
+export const getMyServices = async (req: Request, res: Response): Promise<void> => {
+  const userId = req.user?.id;
+
+  try {
+    const professional = await prisma.professionalProfile.findUnique({
+      where: { userId },
+    });
+
+    if (!professional) {
+      res.status(404).json({ message: "Perfil profesional no encontrado" });
+      return;
+    }
+
+    const services = await prisma.service.findMany({
+      where: {
+        professionalId: professional.id,
+        isActive: true,
+      },
+      include: {
+        professional: {
+          include: {
+            user: true,
+            specialty: true,
+          },
+        },
+      },
+    });
+
+    res.json(services);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al obtener servicios del profesional autenticado" });
   }
 };

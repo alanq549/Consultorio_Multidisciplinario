@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTheme } from "../context/useTheme";
 import { useAuthStore } from "../../store/authStore";
 import "../../styles/ui/SettingsModal.css";
+import { updateUser } from "../../api/users";
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -15,6 +16,13 @@ const SettingsModal: FC<SettingsModalProps> = ({ isOpen, onClose }) => {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
   const [activeSection, setActiveSection] = useState<string>("general");
+  const [selectedPhoto, setSelectedPhoto] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const STATIC_URL = import.meta.env.VITE_BACKEND_STATIC_URL || "";
+
+  const nameRef = useRef<HTMLInputElement>(null);
+  const lastNameRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -29,19 +37,46 @@ const SettingsModal: FC<SettingsModalProps> = ({ isOpen, onClose }) => {
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  ///foto de perfil:
+  const handlePhotoClick = () => {
+    fileInputRef.current?.click();
+  };
 
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedPhoto(e.target.files[0]);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      const response = await updateUser({
+        name: nameRef.current?.value || "",
+        lastName: lastNameRef.current?.value || "",
+        phone: "",
+        photo: selectedPhoto,
+      });
+      // IMPORTANTE: Solo pasar el user, no todo el response
+      useAuthStore.getState().updateUser(response.user);
+      onClose();
+    } catch (err) {
+      console.error("Error al guardar", err);
+      alert("Error al actualizar perfil");
+    }
+  };
+
+  if (!isOpen) return null;
+  const isProfessional = user?.role === "PROFESSIONAL";
   const renderSectionContent = () => {
     switch (activeSection) {
       case "general":
         return (
-          <div className="space-y-4 text-sm">
+          <div className="space-y-4 text-sm  ">
             <div>
               <p>🌐 Idioma: Español / Inglés</p>
             </div>
@@ -63,97 +98,125 @@ const SettingsModal: FC<SettingsModalProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
         );
- case "account":
-  return (
-    <div className="space-y-4 text-sm">
-      {user && <div className="flex items-center space-x-4">
-        <img
-          src={user?.photoUrl || "/default-avatar.jpg"}
-          alt="Foto de perfil"
-          className="w-16 h-16 rounded-full object-cover"
-        />
-        <button className="text-blue-600 underline text-sm">
-          Cambiar foto
-        </button>
-      </div>}
+      case "account":
+        return (
+          <div className="space-y-4 text-sm ">
+            {user && (
+              <div className="flex items-center space-x-4">
+                <img
+                  src={
+                    selectedPhoto
+                      ? URL.createObjectURL(selectedPhoto)
+                      : user?.avatar
+                      ? `${STATIC_URL}${user.avatar}`
+                      : user?.role === "PROFESSIONAL" &&
+                        user.professionalProfile?.photoUrl
+                      ? `${STATIC_URL}${user.professionalProfile.photoUrl}`
+                      : "/user/default-avatar.jpg"
+                  }
+                  alt="Foto de perfil"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
 
-      <div>
-        <label className="block text-xs mb-1">Nombre</label>
-        <input
-          type="text"
-          className="w-full px-2 py-1 border rounded"
-          defaultValue={user?.name}
-        />
-      </div>
+                {!isProfessional && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handlePhotoClick}
+                      className="text-blue-600 underline text-sm"
+                    >
+                      Cambiar foto
+                    </button>
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      style={{ display: "none" }}
+                      accept="image/*"
+                      onChange={handlePhotoChange}
+                    />
+                  </>
+                )}
+              </div>
+            )}
 
-      {user?.role === "PROFESSIONAL" && (
-        <>
-          <div>
-            <label className="block text-xs mb-1">Especialidad</label>
-            <input
-              type="text"
-              className="w-full px-2 py-1 border rounded bg-gray-100"
-              value={user?.professionalProfile?.specialty?.name || ""}
-              disabled
-            />
-          </div>
+            <div>
+              <label className="block text-xs mb-1">Nombre</label>
+              <input
+                type="text"
+                ref={nameRef}
+                className={`w-full px-2 py-1 border rounded  dark:bg-zinc-700${
+                  isProfessional
+                    ? "bg-gray-100 dark:bg-zinc-700 cursor-not-allowed"
+                    : ""
+                }`}
+                defaultValue={user?.name}
+                disabled={isProfessional}
+              />
+            </div>
 
-          <div>
-            <label className="block text-xs mb-1">Descripción</label>
-            <textarea
-              className="w-full px-2 py-1 border rounded"
-              defaultValue={user?.professionalProfile?.description}
-            />
-          </div>
+            <div>
+              <label className="block text-xs mb-1">Apellido</label>
+              <input
+                type="text"
+                ref={lastNameRef}
+                className={`w-full px-2 py-1 border rounded dark:bg-zinc-700 ${
+                  isProfessional
+                    ? "bg-gray-100 dark:bg-zinc-700 cursor-not-allowed"
+                    : ""
+                }`}
+                defaultValue={user?.lastName}
+                disabled={isProfessional}
+              />
+            </div>
 
-<div>
-  <label className="block text-xs mb-1">Certificados</label>
-  <ul className="list-disc list-inside text-xs space-y-1">
-    {user?.professionalProfile?.certificates?.map((cert: string, idx: number) => {
-      const fileName = cert.split("/").pop(); // extrae solo el nombre
-      const isPDF = cert.endsWith(".pdf");
-      const isDOC = cert.endsWith(".doc") || cert.endsWith(".docx");
+            {isProfessional && (
+              <>
+                <div>
+                  <label className="block text-xs mb-1">Especialidad</label>
+                  <input
+                    type="text"
+                    className="w-full px-2 py-1 border rounded bg-gray-100 dark:bg-zinc-700 cursor-not-allowed"
+                    value={user?.professionalProfile?.specialty?.name || ""}
+                    disabled
+                  />
+                </div>
 
-      return (
-        <li key={idx} className="flex items-center space-x-2">
-          <span>
-            {isPDF && "📄"}
-            {isDOC && "📝"}
-            {!isPDF && !isDOC && "📁"}
-          </span>
-          <a
-            href={cert}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline break-all"
-          >
-            {fileName}
-          </a>
-        </li>
-      );
-    })}
-  </ul>
-</div>
+                <div>
+                  <label className="block text-xs mb-1">Descripción</label>
+                  <textarea
+                    className="w-full px-2 py-1 border rounded bg-gray-100 dark:bg-zinc-700 cursor-not-allowed"
+                    value={user?.professionalProfile?.description || ""}
+                    readOnly
+                  />
+                </div>
 
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-semibold">Estado:</span>
+                  {user?.professionalProfile?.isVerified ? (
+                    <span className="text-green-600 font-semibold">
+                      ✔ Verificado
+                    </span>
+                  ) : (
+                    <span className="text-yellow-500 font-semibold">
+                      ⏳ En revisión
+                    </span>
+                  )}
+                </div>
+              </>
+            )}
 
-          <div className="flex items-center space-x-2">
-            <span className="text-xs font-semibold">Estado:</span>
-            {user?.professionalProfile?.isVerified ? (
-              <span className="text-green-600 font-semibold">✔ Verificado</span>
-            ) : (
-              <span className="text-yellow-500 font-semibold">⏳ En revisión</span>
+            {!isProfessional && (
+              <div className="flex justify-end">
+                <button
+                  onClick={handleSave}
+                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                >
+                  Guardar cambios
+                </button>
+              </div>
             )}
           </div>
-        </>
-      )}
-
-      <div className="flex justify-end">
-        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-          Guardar cambios
-        </button>
-      </div>
-    </div>
-  );
+        );
 
       case "apps":
         return (
@@ -184,7 +247,7 @@ const SettingsModal: FC<SettingsModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="settings-backdrop">
+    <div className="settings-backdrop ">
       <div ref={modalRef} className="settings-modal">
         <button className="settings-close-button" onClick={onClose}>
           ✕

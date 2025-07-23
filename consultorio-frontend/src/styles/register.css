@@ -1,0 +1,71 @@
+.register-bg {
+  @apply min-h-screen flex items-center justify-center bg-cover bg-center;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.5)),
+                    url('login&register/background.png');
+}
+
+.register-container {
+  @apply max-w-md w-full mx-4 p-8 bg-white shadow-xl rounded-xl border border-teal-100;
+  backdrop-filter: blur(2px);
+}
+
+.register-header {
+  @apply flex flex-col items-center mb-8;
+}
+
+.register-logo {
+  @apply w-28 h-28 mb-2;
+}
+
+.register-title {
+  @apply text-3xl font-bold text-teal-800 mb-2;
+}
+
+.register-subtitle {
+  @apply text-teal-600 text-base mb-6;
+}
+
+.register-error {
+  @apply text-red-700 mb-4 p-3 bg-red-100 rounded-lg border border-red-200;
+}
+
+.register-form {
+  @apply space-y-5;
+}
+
+.register-input {
+  @apply w-full px-4 py-3 border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-teal-800 placeholder-teal-400;
+}
+
+.register-select {
+  @apply register-input cursor-pointer;
+}
+
+.register-button {
+  @apply w-full bg-teal-600 text-white py-3 rounded-lg hover:bg-teal-700 transition duration-300 font-semibold text-lg shadow-md hover:shadow-teal-200 mt-6;
+}
+
+.register-footer {
+  @apply mt-6 text-center text-sm text-teal-700;
+}
+
+.register-link {
+  @apply text-teal-600 hover:text-teal-800 font-semibold underline-offset-4 hover:underline;
+}
+
+/* Efectos adicionales */
+.register-container {
+  transition: all 0.3s ease;
+}
+
+.register-container:hover {
+  @apply shadow-2xl;
+}
+
+.form-group {
+  @apply mb-4;
+}
+
+.form-label {
+  @apply block text-teal-700 text-sm font-medium mb-1;
+}

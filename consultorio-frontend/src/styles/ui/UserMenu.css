@@ -1,6 +1,7 @@
 .user-menu-button {
-  @apply w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold uppercase;
+  @apply w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold uppercase cursor-pointer fixed top-4 right-6 z-50;
 }
+
 
 .user-menu-dropdown {
   @apply absolute right-0 mt-2 w-48 border rounded shadow-lg z-50 bg-white dark:bg-neutral-800;

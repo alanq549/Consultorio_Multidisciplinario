@@ -5,7 +5,7 @@
 }
 
 .settings-modal {
-  @apply bg-neutral-200 dark:bg-neutral-800 dark:text-white rounded-xl w-full max-w-2xl h-[65vh] max-h-[90vh] overflow-y-auto p-6 relative;
+  @apply bg-neutral-200 dark:bg-neutral-800 dark:text-white rounded-xl w-full max-w-2xl h-[65vh] max-h-[90vh] overflow-y-auto p-6 relative  scrollbar-thin scrollbar-thumb-teal-500 dark:scrollbar-thumb-teal-400 scrollbar-track-transparent;
 }
 
 .settings-close-button {

@@ -2,79 +2,135 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL") // tu conexión MySQL
+  provider = "postgresql"
+  url      = env("DATABASE_URL_post") // tu conexión a la bd
+  
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   name      String
-  email     String    @unique
+  lastName  String?
+  email     String   @unique
   password  String
-  role      Role      @default(CLIENT)
+  role      Role     @default(CLIENT)
   phone     String?
-  createdAt DateTime  @default(now())
-  
+  avatar    String?
+  createdAt DateTime @default(now())
+
   // Relaciones
-  professionalProfile ProfessionalProfile?
-  appointmentsAsClient Appointment[] @relation("ClientAppointments")
-  appointmentsAsProfessional Appointment[] @relation("ProfessionalAppointments")
+  professionalProfile        ProfessionalProfile?
+  appointmentsAsClient       Appointment[]        @relation("ClientAppointments")
+  appointmentsAsProfessional Appointment[]        @relation("ProfessionalAppointments")
+
+  reviewsGiven    Review[] @relation("ReviewClient")
+  reviewsReceived Review[] @relation("ReviewProfessional")
 }
 
 model ProfessionalProfile {
-  id             Int       @id @default(autoincrement())
-  userId         Int       @unique
-  specialtyId    Int
-  description    String
-  certificates  Json
-  photoUrl       String?
-  socialLinks    Json?     // { facebook, instagram, website }
-  isVerified     Boolean   @default(false)  // NUEVO CAMPO
+  id           Int     @id @default(autoincrement())
+  userId       Int     @unique
+  specialtyId  Int
+  description  String
+  certificates Json
+  photoUrl     String?
+  socialLinks  Json? // { facebook, instagram, website }
+  isVerified   Boolean @default(false) // NUEVO CAMPO
 
-  
-  user           User      @relation(fields: [userId], references: [id])
-  specialty      Specialty @relation(fields: [specialtyId], references: [id])
-  services       Service[]
+  user      User      @relation(fields: [userId], references: [id])
+  specialty Specialty @relation(fields: [specialtyId], references: [id])
+  services  Service[]
+  schedules Schedule[]
+
 }
 
+model Review {
+  id             Int      @id @default(autoincrement())
+  rating         Int
+  comment        String?
+  clientId       Int
+  professionalId Int
+  appointmentId  Int?     @unique  // 👈 obligatorio en relaciones 1:1
+  createdAt      DateTime @default(now())
+
+  client       User        @relation("ReviewClient", fields: [clientId], references: [id])
+  professional User        @relation("ReviewProfessional", fields: [professionalId], references: [id])
+  appointment  Appointment? @relation(fields: [appointmentId], references: [id])
+}
+
+
+
 model Specialty {
-  id          Int                  @id @default(autoincrement())
-  name        String               @unique
-  description String?
+  id            Int                   @id @default(autoincrement())
+  name          String                @unique
+  description   String?
+  isActive      Boolean               @default(true) // 👈 este campo
   professionals ProfessionalProfile[]
 }
 
 model Service {
-  id             Int       @id @default(autoincrement())
-  name           String
-  description    String
+  id              Int     @id @default(autoincrement())
+  name            String
+  description     String
   durationMinutes Int
-  price          Float
+  price           Float
+  professionalId  Int
+  isActive        Boolean @default(true)
+
+  professional ProfessionalProfile @relation(fields: [professionalId], references: [id])
+  appointments Appointment[]
+}
+
+model Schedule {
+  id             Int      @id @default(autoincrement())
   professionalId Int
-  isActive       Boolean   @default(true)
-  
-  professional   ProfessionalProfile @relation(fields: [professionalId], references: [id])
-  appointments   Appointment[]
+  dayOfWeek      Int      // 0 = Domingo, 6 = Sábado
+  startTime      String   // formato "HH:MM"
+  endTime        String   // formato "HH:MM"
+  isAvailable    Boolean  @default(true)
+
+  professional ProfessionalProfile @relation(fields: [professionalId], references: [id])
+
+  @@unique([professionalId, dayOfWeek])
+}
+
+model GuestClient {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String?   @unique
+  phone     String?
+  createdAt DateTime  @default(now())
+
+  appointments Appointment[]
 }
 
 model Appointment {
-  id             Int       @id @default(autoincrement())
-  clientId       Int
+  id             Int               @id @default(autoincrement())
+  clientId       Int?
+  guestClientId  Int?
   serviceId      Int
   professionalId Int
   date           DateTime
   startTime      String
   status         AppointmentStatus @default(PENDING)
   notes          String?
-  createdAt      DateTime  @default(now())
-  
-  client         User      @relation("ClientAppointments", fields: [clientId], references: [id])
-  service        Service   @relation(fields: [serviceId], references: [id])
-  professional   User      @relation("ProfessionalAppointments", fields: [professionalId], references: [id])
+  createdAt      DateTime          @default(now())
+
+  client       User?        @relation("ClientAppointments", fields: [clientId], references: [id])
+  guestClient  GuestClient? @relation(fields: [guestClientId], references: [id])
+  service      Service      @relation(fields: [serviceId], references: [id])
+  professional User         @relation("ProfessionalAppointments", fields: [professionalId], references: [id])
+
+  review       Review? // 👈 esto solo y listo
+
+  @@unique([professionalId, date, startTime])
 }
+
+
 
 enum Role {
   ADMIN

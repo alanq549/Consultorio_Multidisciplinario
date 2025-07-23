@@ -6,6 +6,8 @@ import {
   createService,
   updateService,
   deleteService,
+  getServicesByProfessional, 
+  getMyServices,
 } from "../controllers/service.controller";
 import { authenticateJWT, authorizeRoles } from "../middlewares/auth.middleware";
 
@@ -18,5 +20,10 @@ router.get("/:id", getServiceById);
 router.post("/", authenticateJWT, authorizeRoles("PROFESSIONAL", "ADMIN"), createService);
 router.put("/:id", authenticateJWT, authorizeRoles("PROFESSIONAL", "ADMIN"), updateService);
 router.delete("/:id", authenticateJWT, authorizeRoles("PROFESSIONAL", "ADMIN"), deleteService);
+router.get("/professional/me", authenticateJWT, authorizeRoles("PROFESSIONAL"), getMyServices);
+
+router.get("/professional/:id", getServicesByProfessional);
+
+
 
 export default router;

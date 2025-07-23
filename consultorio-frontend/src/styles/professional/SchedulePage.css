@@ -1,0 +1,251 @@
+/* SchedulePage.css */
+.schedule-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-10;
+}
+
+.schedule-header {
+  @apply flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10;
+}
+
+.schedule-title {
+  @apply text-3xl md:text-4xl font-bold text-gray-900 dark:text-white bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent;
+}
+
+.schedule-subtitle {
+  @apply text-gray-600 dark:text-gray-300 text-base md:text-lg max-w-2xl;
+}
+
+.add-schedule-button {
+  @apply flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl;
+  @apply focus:outline-none focus:ring-4 focus:ring-teal-300/50 dark:focus:ring-teal-800/50 hover:scale-[1.02];
+}
+
+.plus-icon {
+  @apply w-5 h-5 stroke-current stroke-2;
+}
+
+.availability-section {
+  @apply mt-10;
+}
+
+.availability-title {
+  @apply text-2xl font-bold text-gray-900 dark:text-white mb-8;
+}
+
+.view-options {
+  @apply flex border-b border-gray-200 dark:border-gray-700 mb-8;
+}
+
+.view-option {
+  @apply px-6 py-3 text-base font-medium text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200;
+  @apply focus:outline-none relative;
+}
+
+.view-option.active {
+  @apply text-teal-600 dark:text-teal-400;
+}
+
+.view-option.active::after {
+  @apply absolute bottom-0 left-0 right-0 h-0.5 bg-teal-600 dark:bg-teal-400 rounded-full;
+  content: '';
+}
+
+/* Schedule Grid */
+.schedule-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+/* Card Styles */
+.schedule-card {
+  @apply p-6 rounded-2xl border border-gray-200 dark:border-teal-700/50 bg-white dark:bg-teal-800/20 shadow-sm hover:shadow-lg transition-all duration-300;
+  @apply hover:border-teal-300 dark:hover:border-teal-500 hover:scale-[1.01];
+}
+
+.time-range {
+  @apply flex items-center gap-4 pb-4 mb-4 border-b border-gray-100 dark:border-teal-700/50;
+}
+
+.time-icon {
+  @apply flex items-center justify-center w-12 h-12 rounded-xl bg-teal-100/50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400;
+  @apply flex-shrink-0 transition-all duration-300;
+}
+
+.time-icon svg {
+  @apply w-6 h-6;
+}
+
+.time-text {
+  @apply text-lg font-semibold text-gray-900 dark:text-white;
+}
+
+.time-separator {
+  @apply text-gray-500 dark:text-gray-400 mx-2;
+}
+
+.days-list {
+  @apply space-y-3;
+}
+
+.day-item {
+  @apply flex justify-between items-center py-2.5 px-3 rounded-lg hover:bg-gray-50/80 dark:hover:bg-teal-900/30 transition-colors duration-200;
+}
+
+.day-name {
+  @apply text-gray-800 dark:text-gray-200 font-medium;
+}
+
+.delete-button {
+  @apply p-2 rounded-lg text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-red-500/50 dark:focus:ring-red-800/50 hover:bg-red-50/50 dark:hover:bg-red-900/20;
+}
+
+.trash-icon {
+  @apply w-5 h-5;
+}
+
+/* Day View */
+.day-view-container {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6;
+}
+
+.day-card {
+  @apply p-5 rounded-2xl border border-gray-200 dark:border-teal-700/50 bg-white dark:bg-teal-900/20 shadow-sm hover:shadow-lg transition-all duration-300;
+  @apply hover:border-teal-300 dark:hover:border-teal-500 hover:scale-[1.01];
+}
+
+.day-header {
+  @apply pb-3 mb-4 border-b border-gray-100 dark:border-teal-700/50;
+}
+
+.day-title {
+  @apply text-xl font-bold text-gray-900 dark:text-white;
+}
+
+.day-time-slots {
+  @apply space-y-3;
+}
+
+.time-slot {
+  @apply flex justify-between items-center py-2.5 px-4 rounded-lg bg-gray-50/50 dark:bg-teal-900/30 hover:bg-gray-100/50 dark:hover:bg-teal-800/40 transition-colors duration-200;
+}
+
+.slot-time {
+  @apply flex items-center gap-3 text-gray-800 dark:text-gray-200 font-medium;
+}
+
+.slot-icon {
+  @apply w-5 h-5 text-teal-600 dark:text-teal-400;
+}
+
+/* Empty State */
+.empty-state {
+  @apply text-center py-16 px-6 rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/20;
+}
+
+.empty-icon-container {
+  @apply mx-auto w-20 h-20 flex items-center justify-center rounded-2xl bg-teal-100/50 dark:bg-teal-900/20 mb-6;
+}
+
+.empty-icon {
+  @apply w-12 h-12 text-teal-600 dark:text-teal-400;
+}
+
+.empty-state h3 {
+  @apply text-2xl font-bold text-gray-900 dark:text-white mb-3;
+}
+
+.empty-state p {
+  @apply text-gray-600 dark:text-gray-300 text-lg mb-6;
+}
+
+.empty-button {
+  @apply mx-auto;
+}
+
+/* Loading State */
+.loading-state {
+  @apply flex flex-col items-center justify-center py-16;
+}
+
+.loading-spinner {
+  @apply w-14 h-14 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mb-6;
+}
+
+.loading-state p {
+  @apply text-gray-600 dark:text-gray-300 text-lg;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300;
+}
+
+.modal-container {
+  @apply bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md mx-4 border border-gray-200 dark:border-gray-700 transform transition-all duration-300 scale-95 opacity-0;
+}
+
+.modal-overlay.visible .modal-container {
+  @apply scale-100 opacity-100;
+}
+
+.modal-header {
+  @apply flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700;
+}
+
+.modal-title {
+  @apply text-2xl font-bold text-gray-900 dark:text-white;
+}
+
+.modal-close {
+  @apply text-3xl text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-all duration-200;
+  @apply focus:outline-none hover:rotate-90;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.schedule-card,
+.day-card {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .schedule-header {
+    @apply gap-4;
+  }
+  
+  .schedule-title {
+    @apply text-2xl;
+  }
+  
+  .add-schedule-button {
+    @apply px-4 py-2.5 text-base;
+  }
+  
+  .view-option {
+    @apply px-4 py-2.5 text-sm;
+  }
+  
+  .schedule-card,
+  .day-card {
+    @apply p-4;
+  }
+  
+  .time-icon {
+    @apply w-10 h-10;
+  }
+  
+  .time-icon svg {
+    @apply w-5 h-5;
+  }
+}

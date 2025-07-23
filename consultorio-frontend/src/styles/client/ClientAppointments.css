@@ -1,0 +1,111 @@
+/* ClientAppointments.css */
+.appointments-container {
+  @apply max-w-6xl mx-auto px-4 py-8;
+}
+
+.appointments-header {
+  @apply flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8;
+}
+
+.appointments-title {
+  @apply text-2xl font-bold text-gray-800 dark:text-white;
+}
+
+.filter-controls {
+  @apply flex flex-wrap gap-2;
+}
+
+.filter-button {
+  @apply px-3 py-1 text-sm rounded-full border border-gray-300 dark:border-teal-400 bg-white dark:bg-zinc-800 hover:bg-gray-50 dark:hover:bg-teal-700/40 transition-colors;
+}
+
+.filter-button.active {
+  @apply bg-teal-600 text-white border-teal-600 hover:bg-teal-700 dark:bg-teal-700/40;
+}
+
+.appointments-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.appointment-card {
+  @apply p-5 rounded-xl border border-gray-200 dark:border-teal-400 bg-white dark:bg-teal-800/40 shadow-sm hover:shadow-md transition-all;
+}
+
+.appointment-header {
+  @apply flex justify-between items-start mb-4 pb-4 border-b border-gray-100 dark:border-teal-200;
+}
+
+.service-name {
+  @apply text-lg font-semibold text-gray-800 dark:text-white;
+}
+
+.status-badge {
+  @apply px-2 py-1 text-xs font-medium rounded-full;
+}
+
+.appointment-details {
+  @apply space-y-3 mb-6;
+}
+
+.detail-row {
+  @apply flex items-center gap-3 text-gray-700 dark:text-gray-300;
+}
+
+.detail-icon {
+  @apply w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0;
+}
+
+.appointment-actions {
+  @apply flex gap-2 pt-4 border-t border-gray-100 dark:border-teal-200;
+}
+
+.action-button {
+  @apply px-4 py-2 text-sm rounded-lg font-medium transition-colors;
+}
+
+.cancel-buttonC_h {
+  @apply text-red-600 dark:text-red-400 border border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20;
+}
+
+.reschedule-button {
+  @apply text-blue-600 dark:text-blue-400 border border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20;
+}
+
+.empty-state {
+  @apply text-center py-12 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl;
+}
+
+.empty-icon {
+  @apply w-12 h-12 mx-auto text-gray-400 dark:text-gray-500 mb-4;
+}
+
+.empty-state h3 {
+  @apply text-lg font-medium text-gray-800 dark:text-white mb-1;
+}
+
+.empty-state p {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+.loading-state {
+  @apply text-center py-12 text-gray-600 dark:text-gray-400;
+}
+
+.error-message {
+  @apply p-4 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .appointments-grid {
+    @apply grid-cols-1;
+  }
+  
+  .filter-controls {
+    @apply justify-center;
+  }
+  
+  .appointment-header {
+    @apply flex-col gap-2;
+  }
+}

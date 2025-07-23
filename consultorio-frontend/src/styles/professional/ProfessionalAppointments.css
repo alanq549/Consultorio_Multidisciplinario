@@ -1,0 +1,177 @@
+/* ProfessionalAppointments.css */
+.professional_pp-container {
+  @apply max-w-7xl mx-auto px-4 py-8;
+}
+
+.professional_pp-header {
+  @apply flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8;
+}
+
+.professional_pp-title {
+  @apply text-2xl md:text-3xl font-bold text-gray-800 dark:text-white;
+}
+
+.professional_pp-actions {
+  @apply flex justify-end;
+}
+
+.professional_pp-new-button {
+  @apply flex items-center gap-2 px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-colors;
+}
+
+.professional_pp-plus-icon {
+  @apply w-5 h-5;
+}
+
+.professional_pp-filters {
+  @apply flex flex-wrap gap-2 mb-6;
+}
+
+.professional_pp-filter-button {
+  @apply px-3 py-1 text-sm rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-zinc-800 hover:bg-gray-50 dark:hover:bg-teal-700/80 transition-colors;
+}
+
+.professional_pp-filter-button.active {
+  @apply bg-teal-600 dark:bg-teal-800/40 text-white border-teal-400 hover:bg-teal-700;
+}
+
+/* Modal styles */
+.professional_pp-modal-backdrop {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50;
+}
+
+.professional_pp-modal-content {
+  @apply bg-white dark:bg-zinc-800 rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto p-6 relative;
+}
+
+.professional_pp-modal-close {
+  @apply absolute top-4 right-4 p-1 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-teal-700 transition-colors;
+}
+
+.professional_pp-modal-close svg {
+  @apply w-6 h-6;
+}
+
+.professional_pp-modal-title {
+  @apply text-xl font-bold mb-6 text-gray-800 dark:text-white;
+}
+
+/* Loading state */
+.professional_pp-loading {
+  @apply flex flex-col items-center justify-center py-12;
+}
+
+.professional_pp-spinner {
+  @apply w-12 h-12 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mb-4;
+}
+
+/* Error state */
+.professional_pp-error {
+  @apply p-4 rounded-lg bg-red-100 dark:bg-red-900/30 text-center;
+}
+
+.professional_pp-retry-button {
+  @apply mt-3 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors;
+}
+
+/* Empty state */
+.professional_pp-empty {
+  @apply text-center py-12 border-2  border-gray-300 dark:border-teal-400 rounded-xl;
+}
+
+.professional_pp-empty-icon {
+  @apply w-12 h-12 mx-auto fill-current text-gray-400 dark:text-gray-300 mb-4;
+}
+
+.professional_pp-empty h3 {
+  @apply text-lg font-medium text-gray-800 dark:text-white mb-1;
+}
+
+.professional_pp-empty p {
+  @apply text-gray-600 dark:text-gray-400 mb-4;
+}
+
+/* Appointments grid */
+.professional_pp-appointments-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.professional_pp-appointment-card {
+  @apply p-5 rounded-xl border border-gray-200 dark:border-teal-400 bg-white dark:bg-teal-800/20 shadow-sm hover:shadow-md transition-all;
+}
+
+.professional_pp-card-header {
+  @apply flex justify-between items-start mb-4 pb-4 border-b border-gray-100 dark:border-teal-400;
+}
+
+.professional_pp-service-name {
+  @apply text-lg font-semibold text-gray-800 dark:text-white;
+}
+
+.professional_pp-status-badge {
+  @apply px-2 py-1 text-xs font-medium rounded-full;
+}
+
+.professional_pp-status-pending {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
+}
+
+.professional_pp-status-confirmed {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+}
+
+.professional_pp-status-cancelled {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+}
+
+.professional_pp-status-completed {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+}
+
+.professional_pp-status-default {
+  @apply bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300;
+}
+
+.professional_pp-card-details {
+  @apply space-y-3;
+}
+
+.professional_pp-detail-row {
+  @apply flex items-start gap-3 text-gray-700 dark:text-gray-300;
+}
+
+.professional_pp-detail-avatar{
+  @apply w-10 h-10 rounded-full object-cover;
+}
+
+.professional_pp-detail-icon {
+  @apply w-5 h-5 flex-shrink-0 mt-0.5 fill-current  dark:text-blue-400;
+}
+
+.professional_pp-notes {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+.professional_pp-actions-row {
+  @apply flex gap-2 mt-2;
+}
+.professional_pp-confirm-button {
+  @apply bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded;
+}
+.professional_pp-cancel-button {
+  @apply bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded;
+}
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .professional_pp-appointments-grid {
+    @apply grid-cols-1;
+  }
+  
+  .professional_pp-filters {
+    @apply justify-center;
+  }
+  
+  .professional_pp-filter-button {
+    @apply px-2 py-1 text-xs;
+  }
+}

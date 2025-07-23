@@ -1,0 +1,134 @@
+/* ProfessionalProfilePage.css */
+.professional-profile_container {
+  @apply max-w-4xl mx-auto px-4 py-8;
+}
+
+.professional-profile_header {
+  @apply flex flex-col md:flex-row items-center gap-6 mb-8 pb-8 border-b border-gray-200 dark:border-gray-700;
+}
+
+.professional-profile_avatar-container {
+  @apply flex-shrink-0;
+}
+
+.professional-profile_avatar {
+  @apply w-32 h-32 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-md;
+}
+
+.professional-profile_avatar-placeholder {
+  @apply w-32 h-32 rounded-full bg-teal-600 text-white flex items-center justify-center text-4xl font-bold border-4 border-white dark:border-gray-800 shadow-md;
+}
+
+.professional-profile_info {
+  @apply text-center md:text-left;
+}
+
+.professional-profile_name {
+  @apply text-3xl font-bold text-gray-800 dark:text-white mb-1;
+}
+
+.professional-profile_specialty {
+  @apply text-xl text-teal-600 dark:text-teal-400 mb-4;
+}
+
+.professional-profile_social-links {
+  @apply flex justify-center md:justify-start gap-4;
+}
+
+.professional-profile_social-link {
+  @apply p-2 rounded-full bg-gray-100 dark:bg-teal-800/40 border dark:border-teal-500 text-gray-800 dark:text-gray-300 hover:bg-teal-100 dark:hover:bg-teal-600/30 transition-colors;
+}
+
+.professional-profile_social-link svg {
+  @apply w-5 h-5 dark:text-white;
+}
+
+.professional-profile_content {
+  @apply space-y-8;
+}
+
+.professional-profile_section {
+  @apply space-y-4;
+}
+
+.professional-profile_section-title {
+  @apply text-2xl font-semibold text-gray-800 dark:text-white;
+}
+
+.professional-profile_description {
+  @apply text-gray-600 dark:text-gray-400 leading-relaxed;
+}
+
+.professional-profile_certificates {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4;
+}
+
+.professional-profile_certificate {
+  @apply flex flex-col items-center;
+}
+
+.professional-profile_certificate-link {
+  @apply flex flex-col items-center text-center hover:opacity-90 transition-opacity;
+}
+
+.professional-profile_certificate-thumbnail {
+  @apply w-full h-40 object-cover rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm;
+}
+
+.professional-profile_certificate-placeholder {
+  @apply w-full h-40 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-700;
+}
+
+.professional-profile_certificate-placeholder svg {
+  @apply w-12 h-12 text-gray-400 dark:text-gray-500;
+}
+
+.professional-profile_certificate-label {
+  @apply mt-2 text-sm font-medium text-gray-700 dark:text-gray-300;
+}
+
+/* Loading state */
+.professional-profile_loading {
+  @apply flex flex-col items-center justify-center py-12;
+}
+
+.professional-profile_spinner {
+  @apply w-12 h-12 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mb-4;
+}
+
+/* Error state */
+.professional-profile_error {
+  @apply flex flex-col items-center justify-center py-12 text-center;
+}
+
+.professional-profile_error-icon {
+  @apply w-12 h-12 text-red-500 mb-4;
+}
+
+.professional-profile_retry-button {
+  @apply mt-4 px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-colors;
+}
+
+/* Empty state */
+.professional-profile_empty {
+  @apply flex flex-col items-center justify-center py-12 text-center;
+}
+
+.professional-profile_empty-icon {
+  @apply w-12 h-12 text-gray-400 dark:text-gray-500 mb-4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .professional-profile_name {
+    @apply text-2xl;
+  }
+  
+  .professional-profile_specialty {
+    @apply text-lg;
+  }
+  
+  .professional-profile_certificates {
+    @apply grid-cols-2;
+  }
+}

@@ -1,0 +1,84 @@
+/* ScheduleFormMultiDays.css */
+.multi-day-form-containersc {
+  @apply w-full max-w-md mx-auto p-7 ;
+}
+
+.form-headersc {
+  @apply flex justify-between items-center mb-6 ;
+}
+
+.form-titlesc {
+  @apply text-xl font-bold text-gray-800 dark:text-white;
+}
+
+.close-buttonsc {
+  @apply text-3xl p-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors;
+}
+
+.multi-day-formsc {
+  @apply space-y-6;
+}
+
+.form-sectionsc {
+  @apply space-y-4;
+}
+
+.section-titlesc {
+  @apply text-lg font-semibold text-gray-700 dark:text-gray-300;
+}
+
+.days-gridsc {
+  @apply grid grid-cols-7 gap-2;
+}
+
+.day-checkboxsc {
+  @apply flex items-center justify-center p-2 rounded-lg border border-gray-300 dark:border-gray-600 cursor-pointer transition-colors text-center text-sm font-medium;
+}
+
+.day-checkboxsc:hover {
+  @apply bg-gray-100 dark:bg-gray-700;
+}
+
+.day-checkboxsc.selected {
+  @apply bg-teal-100 dark:bg-teal-900 border-teal-500 dark:border-teal-600 text-teal-800 dark:text-teal-200;
+}
+
+.time-inputssc {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.time-input-groupsc {
+  @apply space-y-2;
+}
+
+.time-labelsc {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
+}
+
+.time-inputsc {
+  @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-400 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white dark:bg-zinc-700 text-gray-800 dark:text-gray-200 transition-all;
+}
+
+.time-displaysc {
+  @apply block text-xs text-gray-500 dark:text-gray-300;
+}
+
+.form-errorsc {
+  @apply text-red-500 dark:text-red-400 text-sm;
+}
+
+.form-actionssc {
+  @apply flex justify-end gap-5 pt-4 pr-8;
+}
+
+.submit-buttonsc {
+  @apply px-6 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-teal-200 dark:hover:shadow-teal-900 flex items-center gap-2;
+}
+
+.cancel-buttonsc {
+  @apply px-6 py-2.5 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-medium transition-colors;
+}
+
+.spinnersc {
+  @apply animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full;
+}

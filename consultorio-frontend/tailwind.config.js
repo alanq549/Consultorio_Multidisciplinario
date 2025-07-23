@@ -7,10 +7,12 @@ export default {
       colors: {
         layout: {
           light: '#f9fafb', // gray-50
-          dark: '##1B1C1D',  
+          dark: '#1B1C1D',  // corregí el doble ##
         },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 };

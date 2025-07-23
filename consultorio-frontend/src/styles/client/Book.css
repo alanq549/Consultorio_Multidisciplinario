@@ -1,0 +1,228 @@
+/* Book.css */
+.booking-container {
+  @apply max-w-6xl mx-auto px-4 py-8;
+}
+
+.booking-title {
+  @apply text-3xl font-bold text-center text-gray-800 dark:text-white mb-8;
+}
+
+.search-container {
+  @apply relative max-w-2xl mx-auto mb-8;
+}
+
+.search-icon {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-300;
+}
+
+.search-input {
+  @apply w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent;
+  @apply placeholder-gray-400 dark:placeholder-gray-300 text-gray-700 dark:text-gray-300;
+}
+
+.selection-section {
+  @apply max-w-4xl mx-auto;
+}
+
+.section-header {
+  @apply flex items-center mb-6;
+}
+
+.section-title {
+  @apply text-2xl font-semibold text-gray-800 dark:text-white;
+}
+
+.back-button {
+  @apply flex items-center gap-2 mr-4 px-3 py-1.5 rounded-md text-gray-600 dark:text-teal-400 hover:bg-gray-100 dark:hover:bg-zinc-700 transition-colors;
+}
+
+.back-button svg {
+  @apply w-5 h-5 dark:text-gray-200;
+}
+
+.cards-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.selection-card {
+  @apply p-6 rounded-xl border border-gray-200 dark:border-teal-400 bg-white dark:bg-teal-800/40 shadow-sm hover:shadow-md transition-all cursor-pointer;
+  @apply flex flex-col items-center text-center;
+}
+
+.selection-card:hover {
+  @apply border-teal-300 dark:border-teal-300;
+}
+
+.card-icon {
+  @apply w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900 flex items-center justify-center mb-4;
+}
+
+.card-icon svg {
+  @apply w-6 h-6 text-teal-600 dark:text-teal-400;
+}
+
+.card-title {
+  @apply text-lg font-semibold text-gray-800 dark:text-white mb-2;
+}
+
+.card-description {
+  @apply text-gray-600 dark:text-gray-300 text-sm;
+}
+
+.professional-cardC {
+  @apply p-4 rounded-xl border border-gray-200 dark:border-teal-400 bg-white dark:bg-teal-800/40 shadow-sm hover:shadow-md transition-all cursor-pointer;
+  @apply flex items-center gap-4;
+}
+
+.professional-cardC:hover {
+  @apply border-teal-300 dark:border-teal-300;
+}
+
+.professional-avatarC {
+  @apply w-12 h-12 rounded-full bg-teal-600 text-white flex items-center justify-center font-medium flex-shrink-0;
+}
+.professional-avatarC img {
+  @apply w-full h-full object-cover rounded-full;
+}
+
+.professional-infoC {
+  @apply flex-1 text-left;
+}
+
+.professional-nameC {
+  @apply font-semibold text-gray-800 dark:text-white;
+}
+
+.professional-specialtyC {
+  @apply text-sm text-teal-600 dark:text-teal-400;
+}
+
+.professional-descriptionC {
+  @apply text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2;
+}
+
+.services-gridC {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+}
+
+.service-cardC {
+  @apply p-4 rounded-xl border border-gray-200 dark:border-teal-400 bg-white dark:bg-teal-800/40  cursor-pointer;
+  @apply flex items-center gap-4;
+}
+
+.service-cardC:hover {
+  @apply border-teal-300 dark:border-teal-600;
+}
+
+.service-iconC {
+  @apply w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center flex-shrink-0;
+}
+
+.service-iconC svg {
+  @apply w-5 h-5 ;
+}
+
+.service-detailsC {
+  @apply flex-1;
+}
+
+.service-nameC {
+  @apply font-semibold text-gray-800 dark:text-white;
+}
+
+.service-descriptionC {
+  @apply text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2;
+}
+
+.service-metaC {
+  @apply flex gap-4 mt-2;
+}
+
+.service-durationC {
+  @apply text-sm text-blue-600 dark:text-blue-400;
+}
+
+.service-priceC {
+  @apply text-sm font-medium text-gray-800 dark:text-white;
+}
+
+.date-picker-container {
+  @apply max-w-xs mx-auto;
+}
+
+.date-input {
+  @apply w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent;
+}
+
+.time-slots-grid {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3;
+}
+
+.time-slot {
+  @apply px-4 py-2.5 rounded-lg border border-gray-300 dark:border-teal-400 bg-white dark:bg-zinc-700 hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:border-teal-300 dark:hover:border-teal-600 transition-colors;
+  @apply text-center font-medium text-gray-700 dark:text-gray-300;
+}
+
+.confirmation-section {
+  @apply max-w-md mx-auto;
+}
+
+.confirmation-card {
+  @apply p-6 rounded-xl border border-gray-200 dark:border-teal-600 bg-white dark:bg-zinc-800/50 shadow-md;
+}
+
+.confirmation-title {
+  @apply text-xl font-bold text-center text-gray-800 dark:text-white mb-6;
+}
+
+.confirmation-detail {
+  @apply flex justify-between py-3 border-b border-gray-100 dark:border-gray-700;
+}
+
+.detail-label {
+  @apply font-medium text-gray-700 dark:text-gray-300;
+}
+
+.detail-value {
+  @apply text-gray-800 dark:text-white;
+}
+
+.confirm-button {
+  @apply w-full mt-6 px-4 py-3 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-lg transition-colors;
+  @apply flex items-center justify-center gap-2;
+}
+.cancel-button {
+  @apply w-full mt-6 px-4 py-3  text-white font-medium rounded-lg transition-colors;
+  @apply flex items-center justify-center gap-2;
+}
+
+.confirm-button:hover {
+  @apply shadow-md;
+}
+
+.spinner {
+  @apply w-5 h-5 animate-spin;
+}
+
+.error-message {
+  @apply mt-4 p-3 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .cards-grid {
+    @apply grid-cols-1;
+  }
+  
+  .time-slots-grid {
+    @apply grid-cols-2;
+  }
+  
+  .professional-card, .service-card {
+    @apply flex-col items-start;
+  }
+  
+  .professional-info, .service-details {
+    @apply mt-3;
+  }
+}

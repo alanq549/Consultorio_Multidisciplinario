@@ -1,5 +1,48 @@
 @import './styles/Home.css';
-@import './styles//layouts/BaseLayout.css'
+@import './styles/layouts/BaseLayout.css';
+@import './styles/ui/userComponents.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* global.css */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #14b8a6 transparent; /* teal-500 */
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #14b8a6; /* teal-500 */
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.3s;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #0d9488; /* teal-600 */
+}
+
+/* Modo oscuro */
+.dark html {
+  scrollbar-color: #2dd4bf transparent; /* teal-400 */
+}
+
+.dark html::-webkit-scrollbar-thumb {
+  background-color: #2dd4bf; /* teal-400 */
+}
+
+.dark html::-webkit-scrollbar-thumb:hover {
+  background-color: #0f766e; /* teal-700 */
+}

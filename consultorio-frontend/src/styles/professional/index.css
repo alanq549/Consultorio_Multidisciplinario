@@ -1,0 +1,82 @@
+/* ProfessionalDashboard.css */
+.professional-dashboard-container {
+  @apply p-6 max-w-7xl mx-auto min-h-screen bg-gray-50 dark:bg-transparent;
+}
+
+.professional-header {
+  @apply flex items-center justify-between mb-8;
+}
+
+.professional-title {
+  @apply text-4xl font-extrabold text-gray-900 dark:text-white;
+}
+
+.stat-cardP {
+  @apply p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 text-center bg-white dark:bg-zinc-700/40
+  dark:border dark:border-teal-400 dark:hover:bg-teal-800/40
+}
+
+.stat-iconP {
+  @apply mx-auto text-4xl;
+}
+
+.stat-titleP {
+  @apply text-sm mt-2 text-gray-600 dark:text-gray-300;
+}
+
+.stat-valueP {
+  @apply text-2xl font-bold mt-1 text-gray-900 dark:text-white;
+}
+
+.card-hoverP {
+  @apply p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 bg-white dark:bg-zinc-700/40 dark:border dark:border-teal-400
+  dark:hover:bg-teal-800/40;
+}
+
+.card-titleP {
+  @apply text-lg font-semibold mb-4 text-gray-900 dark:text-white;
+}
+
+.card-contentP {
+  @apply text-gray-600 dark:text-gray-300 ;
+}
+
+.chart-containerP {
+  @apply bg-gray-100 dark:bg-zinc-700 rounded-lg p-4 h-64 ;
+}
+
+.floating-meetingP {
+  @apply fixed bottom-6 right-6 bg-orange-500 text-white px-4 py-3 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300;
+}
+
+.service-countP {
+  @apply text-gray-600 dark:text-gray-300 ;
+}
+
+.duration-textP {
+  @apply text-sm mt-2 text-center text-gray-600 dark:text-gray-300;
+}
+
+.new-appointment-btnP {
+  @apply w-full block bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 rounded-lg transition duration-300;
+}
+
+.top-clientP {
+  @apply text-sm text-gray-600 dark:text-gray-300;
+}
+
+.chart-titleP {
+  @apply text-lg font-semibold text-gray-900 dark:text-white mb-4;
+}
+
+.upcoming-appointmentP {
+  @apply text-sm text-gray-600 dark:text-gray-300;
+}
+
+.service-circleP {
+  @apply w-24 h-24 rounded-full mx-auto bg-gradient-to-tr from-orange-400 to-yellow-300 relative mt-4;
+}
+
+.service-inner-circleP {
+  @apply absolute top-1/2 left-1/2 w-16 h-16 bg-white dark:bg-zinc-800 rounded-full transform -translate-x-1/2 -translate-y-1/2;
+}

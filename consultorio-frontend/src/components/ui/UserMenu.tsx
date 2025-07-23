@@ -34,10 +34,35 @@ const UserMenu = () => {
 
   if (!user) return null;
 
+  const STATIC_URL  = import.meta.env.VITE_BACKEND_STATIC_URL  || "";
+
+let userImage: string | null = null;
+
+if (user.role === "PROFESSIONAL" && user.professionalProfile?.photoUrl) {
+  const photoUrl = user.professionalProfile.photoUrl;
+  userImage = photoUrl.startsWith("http")
+    ? photoUrl
+    : `${STATIC_URL}${photoUrl}`;
+} else if (user.avatar) {
+  userImage = user.avatar.startsWith("http")
+    ? user.avatar
+    : `${STATIC_URL}${user.avatar}`;
+
+}
+
+
   return (
-    <div className="relative" ref={menuRef}>
+    <div className="relative " ref={menuRef}>
       <button className="user-menu-button" onClick={() => setOpen(!open)}>
-        {user.name?.[0] ?? "U"}
+        {userImage ? (
+       <img
+  src={`${userImage}?t=${Date.now()}`} // para forzar recarga si la foto cambió
+  alt="User avatar"
+  className="rounded-full w-8 h-8 object-cover"
+/>
+        ) : (
+          user.name?.[0] ?? "U"
+        )}
       </button>
 
       {open && (
@@ -63,8 +88,8 @@ const UserMenu = () => {
           </button>
         </div>
       )}
-
-      <SettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+  <SettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      
     </div>
   );
 };

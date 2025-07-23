@@ -4,7 +4,9 @@ import prisma from "../prisma";
 
 export const getAllSpecialties = async (_req: Request, res: Response) => {
   try {
-    const specialties = await prisma.specialty.findMany();
+    const specialties = await prisma.specialty.findMany({
+      where: { isActive: true },
+    });
     res.json(specialties);
   } catch (error) {
     console.error(error);
@@ -12,7 +14,10 @@ export const getAllSpecialties = async (_req: Request, res: Response) => {
   }
 };
 
-export const getSpecialtyById = async (req: Request, res: Response): Promise<void> => {
+export const getSpecialtyById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   const id = Number(req.params.id);
   try {
     const specialty = await prisma.specialty.findUnique({ where: { id } });
@@ -64,10 +69,14 @@ export const updateSpecialty = async (req: Request, res: Response) => {
 export const deleteSpecialty = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   try {
-    await prisma.specialty.delete({ where: { id } });
-    res.json({ message: "Especialidad eliminada" });
+    await prisma.specialty.update({
+      where: { id },
+      data: { isActive: false },
+    });
+    res.json({ message: "Especialidad desactivada" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error al eliminar especialidad" });
+    res.status(500).json({ message: "Error al desactivar especialidad" });
   }
 };
+

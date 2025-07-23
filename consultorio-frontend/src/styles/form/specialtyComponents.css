@@ -1,0 +1,59 @@
+ /* Specialty Form */
+  .specialty-modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300;
+  }
+
+  .specialty-modal {
+    @apply bg-white dark:bg-neutral-800 rounded-xl shadow-2xl w-full max-w-md p-6 relative transform transition-all duration-300 scale-95 opacity-0;
+  }
+
+  .specialty-modal-open {
+    @apply scale-100 opacity-100;
+  }
+
+  .specialty-modal-title {
+    @apply text-2xl font-bold text-teal-800 dark:text-teal-50 mb-6 pb-2 border-b border-teal-200 dark:border-teal-700;
+  }
+
+  .specialty-input {
+    @apply w-full p-3 border border-teal-200 dark:border-teal-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white dark:bg-zinc-900 text-teal-800 dark:text-teal-50 placeholder-teal-400 dark:placeholder-teal-300 transition-all;
+  }
+
+  .specialty-textarea {
+    @apply specialty-input min-h-[120px];
+  }
+
+  .specialty-form-actions {
+    @apply flex justify-end gap-3 pt-4;
+  }
+
+  .specialty-cancel-btn {
+    @apply px-5 py-2.5 text-teal-600 dark:text-teal-300 hover:text-teal-800 dark:hover:text-teal-100 font-medium transition-colors;
+  }
+
+  .specialty-submit-btn {
+    @apply px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-teal-200 dark:hover:shadow-teal-900;
+  }
+
+  .specialties-page {
+    @apply p-6 max-w-7xl mx-auto;
+  }
+
+  .specialties-header {
+    @apply mb-8;
+  }
+
+  .specialties-title {
+    @apply text-2xl md:text-3xl font-bold text-gray-800 dark:text-white;
+  }
+
+
+
+
+  .specialties-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ;
+  }
+
+  .specialties-empty {
+    @apply flex flex-col items-center justify-center py-12 px-4 text-center  dark:bg-teal-800;
+  }
