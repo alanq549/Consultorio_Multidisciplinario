@@ -8,13 +8,14 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Copiamos también archivos públicos (solo si Vite no los copió)
-RUN cp -r public/* dist/
+# Copiar carpeta `public/` completa dentro de `dist/` (mantiene /img)
+RUN cp -r public dist/
 
 # Etapa de producción
 FROM nginx:alpine
 
 COPY --from=build /app/dist /usr/share/nginx/html
+
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

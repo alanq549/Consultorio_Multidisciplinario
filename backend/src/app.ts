@@ -16,7 +16,7 @@ import  notifications  from "./routes/notifications";
 import { errorHandler } from "./middlewares/error.middleware";
 
 
-const app = express();
+const app = express();//// asi esta :
 
 // Archivos estáticos
 
